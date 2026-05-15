@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head> <!--페이지 설정-->
+        <meta charset="UTF-8"> <!--글자깨짐방지-->
+        <meta name="viewport" content="width-device-width, initial-scale=1"> 
+        <!--viewport스마트폰 화면 무너짐 방지
+        width-device-width웹페이지의 가로 너비를 접속한 기기의 너비에 맞추기
+        initial-scale=1페이지가 처음 로딩될때 정사이즈로 보여줌(모든 웹사이트에 무조건 들어가는 편)-->
+        <title>自己紹介カード</title> <!--브라우저 탭과 북마크에 표시되는 페이지 이름-->
+        <link rel="stylesheet" href="style.css"> <!--CSS파일로드-->
+    </head>
+    <body>
+        <main class="page-shell">
+            <section class="card stack-lg"> <!--카드 형태 디자인을 입히기 위한 클래스, 요소 간 간격을 넓게(large)함-->
+                <p class="eyebrow">HTML / CSS LESSON 01</p> <!--h1 제목 위에 작게 붙는 상단 꼬리표-->
+
+                <div class="profile-row"> <!--display: flex;를 주어 아래 avatar, stack-sm 가로로 나란히 배치-->
+                    <div class="avatar">CH</div> <!--avatar 사용자의 사진, 이니셜 들어가는 동그란 프로필 이미지 구역-->
+
+                    <div class="stack-sm"> <!--제목h1과 설명p을 위아래로 쌓되, 간격을 좁게(small)함-->
+                        <h1 class="page-title">User Notes</h1>
+                        <p class="page-text">
+                            HTMLとCSSの基本を学びながら、
+                            自己紹介カードを作る練習ページです。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="chip-row">
+                    <span class="chip">HTML</span> <!--div와 달리 span은 인라인 요소, 글자 길이만큼만 자리 차지-->
+                    <span class="chip">CSS</span> <!--만약 div(블록요소)로 만들었다면 html,css,flexbox가 각각 한 줄 차지-->
+                    <span class="chip">Flexbox</span> <!--ex)인스타그램 해시태그-->
+                </div>
+
+                <div class="button-row">
+                    <a class="button-link" href="#">プロフィールを見る</a> 
+                    <!--button-link 다른 페이지로 이동하는 링크, href="#" 연결할 주소 없을 때 쓰는 임시 주소-->
+                    <a class="button-link secondary-button" href="#">お問い合わせ</a> <!--메인 버튼 옆 보조 버튼-->
+                </div>
+            </section>
+        </main>
+    </body>
+
+</html>

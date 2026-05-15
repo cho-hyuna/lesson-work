@@ -1,0 +1,121 @@
+body{
+    margin: 0; /*브라우저가 기본으로 가지고 있는 외곽 여백 없애서 화면 꽉 차게 만듦*/
+    font-family:
+    "Hiragino Sans",
+    "Yu Gothic",
+    sans-serif; /*위 폰트들이 없을 때 사용할 기본 고딕체*/
+    background:
+    linear-gradient(
+        180deg, /*위에서 아래 방향으로 그라데이션*/
+        #f8f4ee 0%,
+        #efe7db 100%
+    );
+    color: #1f2937 /*글자색*/
+}
+.page-shell{ /*콘텐츠가 들어갈 틀*/
+    width:
+    min(
+        760px, /*화면이 크면 최대 760px까지만 커짐*/
+        calc(100% - 32px) /*화면이 작아지면 전체 너비에서 양옆 여백 32px 뺀 만큼으로 줄어듦*/
+    );
+    margin: 48px auto; /*위아래 48px여백, 좌우는 auto로 정중앙 배치*/
+}
+
+.card{ /*section부분에 입혀질 실제 카드 디자인*/
+    background: #ffffff; /*카드 안쪽 색상*/
+    border: 1px solid #e7dccd; /*테두리*/
+    border-radius: 24px; /*모서리 둥글게 깎기*/
+    box-shadow: 0 18px 40px rgba(61, 47, 31, 0.08); /*카드 아래에 그림자 넣기,18px아래로 내려오고 40px만큼 넓게 퍼짐)*/
+    padding: 32px; /*카드 테두리와 내부 콘텐츠 사이의 간격을 32px로 넉넉히 줌*/
+}
+
+.stack-sm > * + * { /*.stack-sm 클래스를 가진 부모 안에 있는 자식들 중, 두번째 자식부터 요소의 윗부분에만 여백을 주어라*/
+    margin-top: 8px; /*그냥 margin-top을 쓰면 맨 위 불필요한 여백 발생*/
+}
+
+.stack-lg > * + * { 
+    margin-top: 24px;
+}
+
+.eyebrow{
+    margin: 0;
+    color: #9a3412;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.profile-row{
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+.avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 999px; /*모서리를 많이 깎아서 완벽한 원으로 만듦*/
+    display : flex; /*UN글자를 가로・세로 정가운데에 놓기 위해 Flexbox 사용*/
+    align-items: center; /*세로중앙*/
+    justify-content: center; /*가로중앙*/
+    background: #9a3412; 
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700; /*글자를 굵게*/
+    flex-shrink: 0; 
+    /*이 avatar는 나중에 부모 요소인 .profile-row안에 들어가는데, 옆에 텍스트 내용이 너무 길어지면 아바타 크기를 찌그러뜨리려고 함.
+    이때 무슨 일이 있어도 크기96px를 줄이지 말라고 명령하는 레이아웃 고정 코드*/
+}
+
+.page-title{
+    margin: 0;
+    font-size: 34px;
+    line-height: 1.15;
+}
+
+.page-text{
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.8; /*줄 간격 조정, 글자 크기의 1.8배롤 줄 높이로 잡겠다*/
+}
+
+.chip-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chip{
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #fff6ec;
+    border: 1px solid #f0d8bd;
+    color: #7c2d12;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.button-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.button-link{
+    display: inline-flex; 
+    /*inline: 버튼이 글자처럼 취급되어 옆으로 나란히 배치될 수 있게 함, flex: 버튼 내부의 글자를 자유롭게 정렬할 수 있게 함*/
+    align-items: center;
+    justify-content: center;
+    min-height: 44px; /*ios디자인 가이드에서 권장하는 손가락으로 터치하기 가장 편한 최소 크기*/
+    padding: 0 18px; /*버튼 위아래 여백은 0, 좌우 여백은 18px*/
+    border-radius: 999px;
+    background: #9a3412;
+    color: #ffffff;
+    text-decoration: none; /*<a>태그는 기본적으로 파란색 글씨에 밑줄이 생기는데, 밑줄을 지워버리고 깔끔한 버튼처럼 보이게 함*/
+    font-weight: 700;
+}
+
+.secondary-button{
+    background: #fff8ef;
+    border: 1px solid #fff8ef;
+    color: #7c2d12;
+}
