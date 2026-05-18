@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>投稿一覧</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="app-body">
+        <main class="page-shell">
+            <section class="card stack-lg">
+                <div class="heading-row">
+                    <div class="stack-sm">
+                        <p class="eyebrow">HTML / CSS LESSON 03</p>
+                        <h1 class="page-title">投稿一覧</h1>
+                        <p class="page-text">保存した投稿を一覧で見て、詳細や編集へ進むイメージの画面です。</p>
+                    </div>
+
+                    <div class="actions">
+                        <a class="button-link secondary-button" href="../lesson02/index.html">フォームを見る</a>
+                        <a class="button-link" href="edit.html">編集画面を見る</a> <!--메인버튼-->
+                    </div>
+                </div>
+
+                <div class="post-list">
+                    <article class="post-card stack-sm">
+                        <h2 class="post-title">
+                            <a class="post-link" href="show.html">学習用メモをまとめる</a>
+                        </h2>
+                        <p class="post-body">HTML と CSS の学習内容をカード形式で整理し、あとから見返しやすくなる。</p>
+                    </article>
+                    <hr class="divider"> <!--가로선을 그어주는 태그 hr, 브라우저가 제공하는 칙칙하고 굵은 회색 선을 꾸미기 위한 class="divider"-->
+
+                    <article class="post-card stack-sm">
+                        <h2 class="post-title">
+                            <a class="post-link" href="show.html">IOSアプリ開発のためのSwift入門</a>
+                        </h2>
+                        <p class="post-body">Blade に class を付け、一覧、詳細、編集の見た目を最低限読みやすくそろえる。</p>
+                    </article>
+                </div> 
+            </section>
+        </main>
+    </body>
+</html>

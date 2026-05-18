@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>投稿を編集する</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="app-body">
+        <main class="page-shell narrow-shell">
+            <section class="card stack-lg">
+                <div class="stack-sm">
+                    <p class="eyebrow">HTML / CSS LESSON 03</p>
+                    <h1 class="page-title">投稿を編集する</h1>
+                    <p class="page-text">編集画面では、入力欄を縦にそろえ、最後に操作ボタンを置くと見やすくなります。</p>
+                </div>
+
+                <form class="stack-md">
+                    <div class="field">
+                        <label class="field-label" for="title">タイトル</label>
+                        <input class="field-input" id="title" type="text" value="学習用メモをまとめる">
+                        <!--type: 이 입력창은 비밀번호나 숫자가 아니라 평범한 한 줄짜리 글자를 적는 곳이라고 알려주는 가이드
+                        <input>태그는 혼자서 닫히는 태그(뒤에 </input>이 없음), 태그 사이 글을 넣을 공간이 없어 속성창 value사용-->
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="body">本文</label>
+                        <textarea class="field-input field-textarea" id="body">HTML と CSS の学習内容をカード形式で整理し、あとから見返しやすくなる。</textarea>
+                    </div>
+
+                    <div class="actions">
+                        <button class="primary-button" type="button">更新する</button>
+                        <a class="button-link secondary-button" href="show.html">詳細へ戻る</a>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>
