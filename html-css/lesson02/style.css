@@ -1,0 +1,161 @@
+:root{
+    --bg: #f5f1ea; /*배경색*/
+    --surface: #ffffff; /*카드, 요소 배경*/
+    --surface-soft: #fffaf3; /*카드 내부 특정 부분(댓글창, 입력 폼 배경)*/
+    --text: #1f2937; /*기본 글자색*/
+    --muted: #6b7280; /*중요하지 않은 보조 정보에 적용해 시각적 우선순위 조절 ex) placeholder*/
+    --line: #e5ddd0; /*구분선*/
+    --primary: #1f2644; /*primary-button등에 쓰일 색상*/
+    --primary-soft: #3657d6;
+    --shadow: 0 18px 40px rgba(42, 31, 18, 0.08); /* --shadow: x축 y축 흐림정도 rgba( r g b 투명도 ); */
+}
+
+* { /*페이지에 있는 모든 HTML요소에 이 규칙 적용*/
+    box-sizing: border-box; /* 내가 지정한 가로・세로 크기 안에 여백 및 테두리 포함. 지정한 상자 크기 변하지X*/
+}
+
+body{
+    margin: 0;
+    font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+    background: linear-gradient(180deg, #fbf8f3 0%, #f3ede4 100%);
+    color: var(--text); /*이 요소의 글자 색상을 아까 :root에서 정의한 --text라는 변수값으로 설정하겠다. root와 var은 짝꿍*/
+}
+.app-body{
+    min-height: 100vh; /*배경색 가득 채우기.Viewport Height.100vh=사용자가 보고 있는 브라우저 화면 높이의 100%*/
+}
+
+.page-shell{
+    width: min(760px, calc(100%-32px));
+    margin: 48px auto;
+}
+
+.narrow-shell{ 
+    width: min(680px, calc(100%-32px)); /*아무리 화면이 커져도 이 박스는 600px보다 넓어지지 않게 함*/
+}
+
+.card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    padding: 32px;
+}
+
+.stack-sm > * + * { 
+    margin-top: 8px; 
+}
+
+.stack-md > * + * {
+    margin-top: 16px;
+}
+
+.stack-lg > * + * {
+    margin-top: 24px;
+}
+
+.eyebrow{
+    margin: 0;
+    color: var(--primary-soft);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em; /*현재 글자 크기의 8%만큼 글자 사이 자간 설정*/
+    text-transform: uppercase; /*알파벳 모두 대문자로 강제 변환*/
+}
+
+.page-title {
+    margin: 0; /*제목의 상하좌우 바깥 여백 모두 없애기. h1같은 제목 태그는 기본적으로 넓은 여백 자동 부여하기에 0으로 일단 초기화*/
+    font-size: clamp(30px, 4vw, 38px); /*최솟값, 반응형 값, 최댓값*/
+    line-height: 1.2; /*글자의 줄간격(행간)설정, 글자 크기의 1.2배만큼을 줄 높이로 함*/
+}
+
+.page-text {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.score-card{
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #dde3f6;
+    background: #f8f9ff;
+}
+
+.level-grid{
+    display: grid; /*이 박스를 그리드 형태의 레이아웃 창고로 지정->자식요소들을 가로세로 정렬 가능)*/
+    grid-template-columns: repeat(5, minmax(0, 1fr)); /*가로 칸을 어떻게 나눌지*/
+    /*똑같은 크기의 칸을 5개 연속 만듦(숫자가 5개니까). 각 칸의 크기를 최소 0, 최대 1의 비율fraction로 지정(1fr: 공간을 똑같이 나눠 가짐)*/
+    gap: 12px; /*5등분 된 숫자 박스 사이사이 간격을 정확히 12px로 띄우기(양 끝은 여백 주지 않음)*/
+}
+
+.level-box{
+    display: flex; /*이 박스를 flexbox(정렬 상자)로 바꿈*/
+    align-items: center; /*숫자를 세로 정중앙으로 정렬*/
+    justify-content: center; /*숫자를 가로 정중앙으로 정렬*/
+    min-height: 56px; /*박스 최소 높이 56px로 고정. 손가락으로 터치하기 편한 버튼이 됨*/
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #d5dcf0; /*두께 1px의 실선 테두리 그리기*/
+    font-weight: 700;
+}
+
+.is-active{
+    background: #1f2644;
+    color: #ffffff;
+}
+
+.field{
+    display: flex;
+    flex-direction: column; /*가로로 있던 요소들 세로로 쌓기*/
+    gap: 8px;
+}
+
+.field-label{
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.field-input{
+    width: 100%;
+    padding: 14px 16px; /*입력창 안쪽 여백 위아래14px 좌우16px*/
+    /*초반에 설정한 box-sizing: border-box;덕에 안쪽 여백 많이 줘도 입력창 전체 가로 크기가 100%를 넘지 않음*/
+    border: 1px solid #d6ccbe;
+    border-radius: 18px;
+    background: #fffdfa;
+    font: inherit; /*부모 요소가 가진 폰트 설정을 그대로 물려받음*/
+}
+
+.field-textarea{
+    min-height: 140px; /*입력창이 비어있어도 기본적으로 넉넉한 높이 유지*/
+    resize: vertical; /*길게 입력해도 가로가 아닌 수직으로만 늘어나게끔 함*/
+}
+
+.primary-button {
+    width: 100%;
+    min-height: 52px;
+    border: none; /*브라우저가 버튼에 기본으로 입히는 회색 테두리 지우기*/
+    border-radius: 999px; /*모서리 반지름을 이렇게 크게 주면 알약 모양으로 변함*/
+    background: #1f2644;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer; /*pc에서 버튼 위에 커서를 올렸을 때 손가락 모양으로 바뀜*/
+}
+
+@media(max-width: 640px){
+    .page-shell,
+    .narrow-shell{
+        width: min(100%-24px, 100%);
+        margin: 24px auto; /*위아래*/
+    }
+
+    .card{
+        padding: 22px 18px;
+        border-radius: 20px;
+    }
+
+    .level-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

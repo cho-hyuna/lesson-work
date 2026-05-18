@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>提出フォーム風ページ</title>
+        <link rel="stylesheet" href="style.css"
+    </head>
+    <body class="app-body">
+        <main class="page-shell narrow-shell">
+            <section class="card stack-lg">
+                <div class="stack-sm">
+                    <p class="eyebrow">HTML / CSS LESSON 02</p>
+                    <h1 class="page-title">3週目研修の理解度チェック</h1>
+                    <p class="page-text">受講者が理解度と必要な情報を提出する画面を、HTMLとCSSだけで表現します。</p>
+                </div>
+
+                <section class="score-card stack-md">
+                    <div class="stack-sm">
+                        <p class="field-label">理解度</p> 
+                        <p class="page-text">今の理解度を１〜１０で選択する想定です。ここでは見た目だけを作ります。</p>
+                    </div>
+
+                    <div class="level-grid"> <!--숫자 버튼을 나열하기 위한 컨테이너. CSS의 Flexbox나 Grid 레이아웃 사용해 숫자를 일정한 간격으로 배치-->
+                        <div class="level-box">1</div> <!--각각의 숫자를 감싸는 사각형 박스 디자인-->
+                        <div class="level-box">3</div>
+                        <div class="level-box is-active">5</div> <!--!중요! 현재 사용자가 숫자 5를 선택했다는 것을 시각적으로 보여주기 위해 사용-->
+                        <div class="level-box">7</div>
+                        <div class="level-box">10</div>
+                    </div>
+                </section>
+
+                <form class="stack-md">
+                    <div class="field"> <!--전체 입력 항목을 감싸는 박스. 제목과 입력창을 하나의 묶음으로 관리하기 위해 사용-->
+                        <label class="field-label" for="comment">コマンド</label> <!--for="comment"는 아래 id="comment"를 가진 textarea와 짝꿍-->
+                        <textarea class="field-input field-textarea" id="comment" placeholder="普通の提出時のコマンドを書きます。"></textarea>
+                        <!--field-input 입력 이유: field textarea에게 공통 디자인을 입히기 위함/id는 라벨과 연결되는 고유한 이름표-->
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="github_url">GITHUB URL</label>
+                        <input class="field-input" id="github_url" type="url" placeholder="https://github.com/xxxx">
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="mini_work">ミニ演習</label>
+                        <textarea class="field-input field-textarea" id="mini_work" placeholder="ここが文章提出が必要な場合にのみ表示される項目です。"></textarea>
+
+                    <button class="primary-button" type="button">提出する</button> 
+                    <!--class="primary-button"디자인을 입히기 위한 이름표, 보통 primary가 붙으면 가장 눈에 띄는 색상과 굵은 글씨가 적용되도록 설계
+                    type-"button"이 버튼의 동장 방식 결정-->
+                </form>
+            </section>
+        </main>
+    </body>
+</html>
