@@ -2,6 +2,7 @@
 $name = trim($_POST['name'] ?? ''); //사용자가 폼에 입력해서 전송한 '이름'데이터
 //trim(...) 사용자가 실수로 스페이스바만 입력했을 경우를 대비해, 앞뒤 불필요한 공백을 잘라내주는 안전장치 함수
 $comment = trim($_POST['comment'] ?? ''); //??(NULL 병합 연산자)-> 만약 페이지에 처음 접속해서 $_POST['name']값이 아예 존재하지 않는 상태라면, 에러를 내는 대신 빈 문자열''을 기본값으로 집어 넣음
+$email = trim($_POST['email'] ?? '');
 $errors = []; //에러 메시지들을 담아두기 위해 미리 준비한 배열 바구니
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //사용자가 페이지를 그냥 연 것인지(GET) 제출 버튼을 눌러 데이터를 보낸 것인지(POST) 확인하는 조건문
@@ -11,6 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //사용자가 페이지를 그냥 �
     
     if ($comment === ''){
         $errors[] = 'コメントを入力してください。';
+    }
+    
+    if($email === ''){
+        $errors[] = 'メールを入力してください。';
     }
 }
 // 사용자가 입력한 데이터를 받는 서버, 입력 받은 것을 확인하고 에러인지 아닌지 판단, 에러메시지를 준비하는 곳
@@ -43,9 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //사용자가 페이지를 그냥 �
         <p>受け取りました。</p>
         <p>名前: <?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?></p>
         <p>コメント: <?php echo nl2br(htmlspecialchars($comment, ENT_QUOTES, 'UTF-8'));?></p>
+        <p>メール: <?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?></p>
         <!--n12br: 문자열 속 줄바꿈 문자\n을 HTML의 줄바꿈 태그<br />로 알아서 바꿔줌. 사용자가 쓴 대로 줄바꿈이 보이게 해주는 함수. 반드시 htmlspecialchars로 감싼 후 사용-->
     <?php endif; ?>
-    <!--사용자가 제출 버튼을 눌렀고 빠뜨린 항목 없이(에러x) 입력했다면, 사용자가 입력했던 결과(데이터)를 화면에 출력하는 역할-->
+    <!--사용자가 제출 버튼을 눌렀고 빠뜨린 항목 없이(에러x) 입력했다면, 사용자가 입력했던 결과(데이터)를 화면에 출력하는 역할(전송 성공 화면)-->
 
     <form action="" method="POST">
         <div>
@@ -58,6 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){ //사용자가 페이지를 그냥 �
         <div>
             <label for="comment">コメント</label>
             <textarea id="comment" name="comment"><?php echo htmlspecialchars($comment, ENT_QUOTES, 'UTF-8'); ?></textarea>
+        </div>
+
+        <div>
+            <label for="email">メール</label>
+            <input id="email" type="text" name="email" value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?>">
         </div>
         
         <button type-"submit">送信する</button> <!--버튼을 누르면 <form> 태그에 설정된 규칙 method="POST"에 따라 사용자가 입력한 데이터를 서버로 전송-->
