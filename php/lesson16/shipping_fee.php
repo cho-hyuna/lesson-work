@@ -1,15 +1,20 @@
 <?php
 //주문 금액-정수, 회원 상태-진위
 
-function calculateShippingFee(int $orderPrice, $isMember){
-    if($orderPrice >= 5000){
+const FREE_SHIPPING_PRICE = 5000;
+const MEMBER_SHIPPING_FEE = 300;
+const NONMEMBER_SHIPPING_FEE = 600;
+
+function calculateShippingFee(int $orderPrice, bool $isMember){
+
+    if($orderPrice >= FREE_SHIPPING_PRICE){
         return 0;
     }
     else if($isMember){
-        return 300;
+        return MEMBER_SHIPPING_FEE;
     }
     else {
-        return 600;
+        return NONMEMBER_SHIPPING_FEE;
     }
 }
 
@@ -17,13 +22,13 @@ function buildShippingMessage(int $orderPrice, $isMember){
     $shippingFee = calculateShippingFee($orderPrice, $isMember);
 
     if($isMember){
-        $member = "はい";
+        $currentMember = "はい";
     }else{
-        $member = "いいえ";
+        $currentMember = "いいえ";
     }
 
     $message = "注文金額: {$orderPrice}円\n";
-    $message .= "会員: {$member}\n";
+    $message .= "会員: {$currentMember}\n";
     $message .= "送料: {$shippingFee}円\n";
 
     return $message;
