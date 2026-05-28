@@ -31,12 +31,3 @@ foreach($products as $product){
 }
 
 echo "対象件数: {$minStock['stock']}件\n";
-
-
-/*
-foreach($products as $product){
-   if($product['stock'] <= 5){
-    echo"{$product['name']}: {$product['stock']}個\n";
-   }
-}
-*/
