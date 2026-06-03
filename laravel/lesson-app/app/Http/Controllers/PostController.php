@@ -37,4 +37,23 @@ class PostController extends Controller
     {
         return view('posts.show', compact('post'));
     }
+
+     public function edit(Post $post)
+    {
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        $validated = $request->validate([
+            'title'=>['required', 'max:255'],
+            'body'=>['required'],
+        ]);
+
+        $post->title = $validated['title'];
+        $post->body = $validated['body'];
+        $post->save();
+
+        return redirect('/posts/' . $post->id)->with('message', '投稿を更新しました。');
+    }
 }
