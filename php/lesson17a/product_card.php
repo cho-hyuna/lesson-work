@@ -1,6 +1,6 @@
 <?php
 
-class Products{
+class Product{
     public $productName;
     public $productPrice;
     public $stock;
@@ -27,17 +27,17 @@ class Products{
 
 }
 
-$pen = new Products();
+$pen = new Product();
 $pen->productName = "Pen";
 $pen->productPrice = 120;
 $pen->stock = 12;
 
-$notebook = new Products();
+$notebook = new Product();
 $notebook->productName = "Notebook";
 $notebook->productPrice = 260;
 $notebook->stock = 0;
 
-$bag = new Products();
+$bag = new Product();
 $bag->productName = "Bag";
 $bag->productPrice = 2800;
 $bag->stock = 3;
