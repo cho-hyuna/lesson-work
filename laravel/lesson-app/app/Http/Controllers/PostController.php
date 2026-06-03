@@ -32,4 +32,9 @@ class PostController extends Controller
 
         return redirect('/posts')->with('message', '投稿を保存しました。');
     }
+    
+    public function show(Post $post)
+    {
+        return view('posts.show', compact('post'));
+    }
 }
