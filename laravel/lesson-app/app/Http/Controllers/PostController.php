@@ -56,4 +56,11 @@ class PostController extends Controller
 
         return redirect('/posts/' . $post->id)->with('message', '投稿を更新しました。');
     }
+    
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect('/posts')->with('message', '投稿を削除しました。');
+    }
 }
