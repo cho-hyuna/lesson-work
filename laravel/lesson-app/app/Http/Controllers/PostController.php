@@ -7,11 +7,23 @@ use Illuminate\Http\Request; //사용자가 입력한 폼 데이터(제목, 내�
 
 class PostController extends Controller
 {
-    public function index()
-    {
-        $posts = Post::latest()->get();
-        return view('posts.index', compact('posts'));
-    }
+    public function index(Request $request)
+{
+    $keyword = $request->query('keyword');
+    // URL 주소창에서 ?keywork=검색어 형식으로 들어온 값을 읽어옴(없으면 null)
+
+    $posts = Post::query()
+        ->when($keyword, function ($query, $keyword) { // $keyword에 값이 있을 때만 이 안의 쿼리(조건) 추가
+            $query->where('title', 'like', '%' . $keyword . '%');
+            // 제목(title)에 검색어가 포함된 것(%검색어%)만 찾기(LIKE 검색)
+        })
+        ->latest() //최신순으로 정렬
+        ->get(); //최종 결과 DB에서 가져오기
+
+    return view('posts.index', compact('posts', 'keyword'));
+    //가져온 게시글 목록($posts)과 사용자가 입력했던 검색어($keyword)를 화면에 넘겨줌
+}
+
 
     public function create()
     {
