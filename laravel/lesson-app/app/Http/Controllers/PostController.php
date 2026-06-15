@@ -18,7 +18,9 @@ class PostController extends Controller
             // 제목(title)에 검색어가 포함된 것(%검색어%)만 찾기(LIKE 검색)
         })
         ->latest() //최신순으로 정렬
-        ->get(); //최종 결과 DB에서 가져오기
+        ->paginate(5) //get()이 아닌 paginate(5)는 한 페이지에 5건만 가져옴
+        ->withQueryString();
+        //->get(); //최종 결과 DB에서 가져오기
 
     return view('posts.index', compact('posts', 'keyword'));
     //가져온 게시글 목록($posts)과 사용자가 입력했던 검색어($keyword)를 화면에 넘겨줌
