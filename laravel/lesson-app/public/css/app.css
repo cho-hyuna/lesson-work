@@ -332,3 +332,41 @@ a { /*a는 고집이 강한 태그. 웹사이트 전체를 예쁜 색상으로 �
 .search-field {
     margin: 0;
 }
+
+.pagination-wrap {
+    margin-top: 20px;
+}
+
+.pagination-wrap .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.pagination-wrap a,
+.pagination-wrap span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #fffdfa;
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.pagination-wrap a:hover {
+    background: #f8ebd8;
+}
+
+.pagination-wrap .disabled span {
+    color: var(--muted);
+    background: #f4eee6;
+}

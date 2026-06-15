@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>投稿一覧</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/app.css">
 </head>
@@ -51,6 +52,9 @@
                     <div class="empty-state">まだ投稿がありません。</div>
                 @endforelse
             </div>
+            <div class="pagination-wrap">
+    {{ $posts->links('pagination::simple-default') }}
+</div>
         </section>
     </main>
 </body>
